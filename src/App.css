@@ -1,0 +1,138 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  min-height: 100vh;
+}
+
+.role-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  background: white;
+}
+
+.role-selector h1 {
+  margin-top: 0;
+  font-size: 2rem;
+  color: black;
+}
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  background: #fff;
+  color: #000;
+  border: 2px solid #000;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  background: #eee;
+}
+
+.btn.primary {
+  background: #000;
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: #333;
+}
+
+/* DM Panel Styles */
+.dm-panel {
+  width: 100%;
+  max-width: 1200px;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.dm-char-card {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  position: relative;
+  overflow: hidden;
+  background: white;
+  border: 2px solid black;
+}
+
+.dm-char-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dm-char-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  text-transform: none;
+}
+
+.dm-char-ac {
+  border: 2px solid black;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.dm-hp-bar-container {
+  width: 100%;
+  height: 10px;
+  background: #eee;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.dm-hp-bar {
+  height: 100%;
+  background: var(--accent-green);
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.dm-hp-bar.low {
+  background: var(--accent-red);
+}
+
+.dm-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dm-controls input {
+  flex: 1;
+  background: #fff;
+  border: 1px solid black;
+  color: black;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.dm-btn {
+  padding: 0.5rem;
+  border: 1px solid black;
+  font-weight: bold;
+  background: #fff;
+  color: black;
+}
+
+.dm-btn.dmg { color: var(--accent-red); border-color: var(--accent-red); }
+.dm-btn.dmg:hover { background: #ffebee; }
+
+.dm-btn.hl { color: var(--accent-green); border-color: var(--accent-green); }
+.dm-btn.hl:hover { background: #e8f5e9; }

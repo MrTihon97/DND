@@ -1,0 +1,51 @@
+:root {
+  --bg-color: #f4f4f4;
+  --sheet-bg: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --border-color: #000000;
+  --border-light: #cccccc;
+  --accent-red: #d32f2f;
+  --accent-green: #388e3c;
+  --font-base: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  --font-sans: 'Arial', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input, textarea {
+  font-family: var(--font-sans);
+}
+
+.glass-panel {
+  background: var(--sheet-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+}
