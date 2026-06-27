@@ -204,12 +204,25 @@ io.on('connection', (socket) => {
   socket.on('player_short_rest', ({ sessionId, charId }) => {
     const char = db.characters.find(c => c.id === charId);
     if (char) {
-      addLog(sessionId, `☕ ${char.name} присел на Короткий отдых.`);
+      if (char.hp && char.hp.max) {
+        const healAmount = Math.floor(char.hp.max * 0.8);
+        char.hp.current = Math.min(char.hp.max, (char.hp.current || 0) + healAmount);
+      }
+      io.to(sessionId).emit('char_updated', char);
+      addLog(sessionId, `☕ ${char.name} присел на Короткий отдых (восстановлено 80% ХП).`);
     }
   });
 
   socket.on('dm_short_rest', (sessionId) => {
-    addLog(sessionId, '☕ Мастер объявил Короткий отдых. Игроки могут потратить Кости хитов для лечения.');
+    db.characters.filter(c => c.sessionId === sessionId).forEach(char => {
+      if (char.hp && char.hp.max) {
+        const healAmount = Math.floor(char.hp.max * 0.8);
+        char.hp.current = Math.min(char.hp.max, (char.hp.current || 0) + healAmount);
+      }
+    });
+    const chars = db.characters.filter(c => c.sessionId === sessionId);
+    io.to(sessionId).emit('initial_state', chars);
+    addLog(sessionId, '☕ Мастер объявил Короткий отдых. Игроки восстановили 80% ХП.');
   });
 
   // Free text event

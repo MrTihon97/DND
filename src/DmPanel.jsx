@@ -295,7 +295,7 @@ export default function DmPanel({ socket, sessionId, goBack }) {
               
               <button 
                 onClick={() => {
-                  if(window.confirm('Объявить Короткий отдых? (Игроки смогут потратить Кости Хитов)')) {
+                  if(window.confirm('Объявить Короткий отдых? (Все игроки восстановят 80% Максимального ХП)')) {
                     socket.emit('dm_short_rest', sessionId);
                   }
                 }}

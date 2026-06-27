@@ -770,40 +770,6 @@ export default function CharacterSheet({ socket, charId, sessionId, goBack }) {
               <span>🛡 Дополнительное здоровье</span>
             </div>
           </div>
-
-          <div className="dnd-box cs-hit-dice-box" title="Бросьте эти кости во время короткого отдыха, чтобы вылечиться. Максимум равен вашему уровню.">
-            <div style={{display: 'flex', marginBottom: '5px', alignItems: 'center', gap: '5px'}}>
-              <span style={{fontSize: '0.75rem', color: '#666', whiteSpace: 'nowrap'}}>Тип:</span>
-              <select value={character.hitDice?.type || ''} onChange={e => updateNestedField('hitDice', 'type', e.target.value)} style={{flex: 1, padding: '2px', border: '1px solid #ccc', borderRadius: '4px', fontSize: '0.75rem'}}>
-                <option value="">Выберите...</option>
-                <option value="d6">d6 (Маг, Чародей)</option>
-                <option value="d8">d8 (Плут, Жрец, Бард)</option>
-                <option value="d10">d10 (Воин, Паладин)</option>
-                <option value="d12">d12 (Варвар)</option>
-              </select>
-            </div>
-            <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '10px', alignItems: 'center'}}>
-              <span style={{fontSize: '0.8rem', color: '#666'}}>Максимум:</span>
-              <span style={{fontSize: '1rem', fontWeight: 'bold'}}>{character.level || 1}</span>
-            </div>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-              <span style={{fontSize: '0.8rem', color: '#666'}}>Осталось:</span>
-              <div className="cs-ds-circles" style={{display: 'flex', flexWrap: 'wrap', gap: '4px', justifyContent: 'flex-end', flex: 1}}>
-                {Array.from({length: Math.min(20, character.level || 1)}).map((_, n) => {
-                  const current = character.hitDice?.current ?? character.level ?? 1;
-                  return (
-                    <input 
-                      key={`hd-${n}`} 
-                      type="checkbox" 
-                      checked={current > n} 
-                      onChange={e => updateNestedField('hitDice', 'current', e.target.checked ? n + 1 : n)} 
-                      style={{width: '18px', height: '18px', cursor: 'pointer'}} 
-                    />
-                  );
-                })}
-              </div>
-            </div>
-            <div style={{textAlign: 'center', marginTop: '10px', fontSize: '0.85rem', fontWeight: 'bold', textTransform: 'uppercase', color: '#333'}}>Кости здоровья (Отдых)</div>
           </div>
 
           <div className="dnd-box cs-rest-box" style={{marginBottom: '20px'}}>
@@ -812,7 +778,7 @@ export default function CharacterSheet({ socket, charId, sessionId, goBack }) {
                <button 
                  onClick={() => socket.emit('player_short_rest', { sessionId, charId: character.id })}
                  style={{flex: 1, padding: '10px', background: '#f5f5f5', border: '2px solid #ccc', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold', display: 'flex', flexDirection: 'column', alignItems: 'center'}}
-                 title="Нажмите, чтобы уведомить Мастера о коротком отдыхе. Восстановите ХП с помощью костей хитов вручную."
+                 title="Нажмите, чтобы уведомить Мастера о коротком отдыхе. Восстанавливает 80% здоровья."
                >
                  <span style={{fontSize: '1.2rem'}}>☕</span>
                  <span style={{fontSize: '0.8rem', marginTop: '5px'}}>Короткий</span>
