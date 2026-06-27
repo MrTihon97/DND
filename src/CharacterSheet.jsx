@@ -770,7 +770,6 @@ export default function CharacterSheet({ socket, charId, sessionId, goBack }) {
               <span>🛡 Дополнительное здоровье</span>
             </div>
           </div>
-          </div>
 
           <div className="dnd-box cs-rest-box" style={{marginBottom: '20px'}}>
              <span className="dnd-box-title">ОТДЫХ</span>
