@@ -219,7 +219,7 @@ io.on('connection', (socket) => {
 });
 
 // Любые другие GET запросы отправляем на React-приложение
-app.get('*', (req, res) => {
+app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
